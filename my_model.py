@@ -1,14 +1,8 @@
-"""  
-Copyright (c) 2019-present NAVER Corp.
-MIT License
-"""
-
-# -*- coding: utf-8 -*-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from basenet.vgg16_bn import vgg16_bn, init_weights
+from vgg16_bn import vgg16_bn, init_weights
 
 class double_conv(nn.Module):
     def __init__(self, in_ch, mid_ch, out_ch):
@@ -28,11 +22,16 @@ class double_conv(nn.Module):
 
 
 class CRAFT(nn.Module):
-    def __init__(self, pretrained=False, freeze=False):
+    def __init__(self, pretrained=False, freeze=False, phase='test'):
         super(CRAFT, self).__init__()
 
         """ Base network """
         self.basenet = vgg16_bn(pretrained, freeze)
+        
+        """ 固定部分参数，用于迁移学习"""
+        if phase == 'train':
+            for p in self.parameters():
+                p.requires_grad=False
 
         """ U network """
         self.upconv1 = double_conv(1024, 512, 256)
@@ -80,6 +79,6 @@ class CRAFT(nn.Module):
         return y.permute(0,2,3,1), feature
 
 if __name__ == '__main__':
-    model = CRAFT(pretrained=True).cuda()
-    output, _ = model(torch.randn(1, 3, 768, 768).cuda())
+    model = CRAFT(pretrained=False)
+    output, _ = model(torch.randn(1, 3, 768, 768))
     print(output.shape)
