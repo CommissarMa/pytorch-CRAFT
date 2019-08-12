@@ -30,7 +30,7 @@
 ## 3. 使用得到的新模型来测试自己的文本图像
 这里我们会遇到一个问题，在训练时，每个epoch之后我们都会保持一个模型，那究竟应该使用哪个呢？  
 其实这也没有一个标准答案，选不同的都试试看测试效果，然后挑一个比较好的即可。  
-具体的步骤与1差不多：将models文件夹中的权重，比如：100.pth放入./pretrained中，然后运行代码：  
+具体的步骤与1差不多：将models文件夹中的权重，比如：[[100.pth]](https://pan.baidu.com/s/1Na5hA2-RXMovIa6J7aJzhw )(提取码:1tmc)放入./pretrained中，然后运行代码：  
 ```
 python test.py --trained_model ./pretrained/100.pth
 ```
