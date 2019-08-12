@@ -107,6 +107,8 @@ def test_net(net, image, text_threshold, link_threshold, low_text, cuda, poly):
 
 
 if __name__ == '__main__':
+    args.cuda = torch.cuda.is_available() # 自动判断使用CPU还是CUDA
+    
     # load net
     net = CRAFT()     # initialize
 
