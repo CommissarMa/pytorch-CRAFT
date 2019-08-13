@@ -38,8 +38,8 @@ def str2bool(v):
     return v.lower() in ("yes", "y", "true", "t", "1")
 
 parser = argparse.ArgumentParser(description='CRAFT Text Detection')
-parser.add_argument('--trained_model', default='./pretrained/craft_mlt_25k.pth', type=str, help='pretrained model')
-#parser.add_argument('--trained_model', default='./pretrained/5.pth', type=str, help='pretrained model')
+#parser.add_argument('--trained_model', default='./pretrained/craft_mlt_25k.pth', type=str, help='pretrained model')
+parser.add_argument('--trained_model', default='./pretrained/100.pth', type=str, help='pretrained model')
 parser.add_argument('--text_threshold', default=0.7, type=float, help='text confidence threshold')
 parser.add_argument('--low_text', default=0.4, type=float, help='text low-bound score')
 parser.add_argument('--link_threshold', default=0.001, type=float, help='link confidence threshold')

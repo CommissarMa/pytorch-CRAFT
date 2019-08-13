@@ -36,3 +36,10 @@ python test.py --trained_model ./pretrained/100.pth
 ```
 检测的结果将保存在result文件夹中供查看，可以发现检测的效果相比直接使用预训练模型有了一定的提升！  
 ![检测结果](./readme_imgs/res_blw_1.jpg) 
+
+## 4. 将标注的点透视变换成水平文本框(供文本识别使用)
+```
+run divide_text_region_from_gt.py
+```
+注意修改main函数中的参数配置。
+

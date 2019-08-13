@@ -106,8 +106,8 @@ def generate_transformed_gaussian_kernel(h, w, points):
 if __name__ == '__main__':
     # 注意：标注是顺时针方向，4个顶点
     
-    name = 'blw'
-    root = './'+name
+    name = 'ydc'
+    root = './data/'+name
     for c in os.listdir(root):
         if '.json' in c:
             continue
